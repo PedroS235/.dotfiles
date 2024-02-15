@@ -1,0 +1,101 @@
+# TODO: Missing command to install lazygit
+OS: 'Linux' # Darwin, Windows
+tasks:
+  - name: 'Update & upgrade apt packages'
+    cmds: ['sudo apt update', 'sudo apt upgrade -y']
+
+  - name: 'Install necessary apt packages'
+    cmds:
+      [
+        'sudo apt install git python3-venv python3-pip ripgrep xclip curl unzip',
+        'sudo apt install lolcat figlet tmux snapd',
+      ]
+
+  - name: 'Install starship'
+    cmds: ['curl -sS https://starship.rs/install.sh | sh']
+
+  - name: 'Install Tmux Plugin Manager (tpm)'
+    cmds: ['git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm']
+
+  - name: 'Install a nerd font'
+    cmds:
+      [
+        'mkdir -p $HOME/.local/share/fonts/',
+        'curl -fLO https://github.com/ryanoasis/nerd-fonts/raw/HEAD/patched-fonts/FantasqueSansMono/Regular/FantasqueSansMNerdFontMono-Regular.ttf',
+        'mv FantasqueSansMNerdFontMono-Regular.ttf $HOME/.local/share/fonts',
+        'cd $HOME',
+      ]
+
+  - name: 'Install NodeJs'
+    cmds:
+      [
+        'curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - && sudo apt-get install -y nodejs',
+      ]
+
+  - name: 'Install Neovim from source'
+    cmds:
+      [
+        'sudo apt install cmake gettext ninja-build',
+        'git clone https://github.com/neovim/neovim --branch stable "$HOME"/.neovim',
+        'cd "$HOME"/.neovim && make CMAKE_BUILD_TYPE=Release',
+        'cd "$HOME"/.neovim && sudo make install',
+        'cd $HOME',
+        'pip3 install neovim',
+        'sudo npm -g install neovim',
+      ]
+
+  - name: 'Install Spotify'
+    cmds: ['snap install spotify']
+
+  - name: 'Install Mega'
+    cmds:
+      [
+        'curl https://mega.nz/linux/repo/xUbuntu_22.10/amd64/megasync-xUbuntu_22.10_amd64.deb -o mega.deb',
+        'sudo apt install --fix-broken ./mega.deb',
+        'rm -rf ./mega.deb',
+      ]
+
+  - name: 'Install Discord'
+    cmds:
+      [
+        'curl https://discord.com/api/download?platform=linux&format=deb -o discord.deb',
+        'sudo apt install ./discord.deb',
+        'rm -rf discord.deb',
+      ]
+
+  - name: 'Install fzf'
+    cmds:
+      [
+        'git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf',
+        '$HOME/.fzf/install',
+      ]
+
+  - name: 'Install Rust'
+    cmds: ['curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs | sh']
+
+  - name: 'Install zsh and oh-my-zsh'
+    cmds:
+      [
+        'sudo apt install zsh',
+        'sh -c "$(curl -fsSL https://raw.githubusercontent.com/PedroS235/ohmyzsh/master/tools/install.sh)"',
+      ]
+
+  - name: 'Install oh-my-zsh plugins'
+    cmds:
+      [
+        'git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions',
+        'git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting',
+      ]
+
+  - name: 'Install dotfiles'
+    cmds:
+      [
+        'git clone --bare --recurse-submodules git@github.com:PedroS235/dotfiles.git "$HOME/.dotfiles"',
+        '/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" config status.showUntrackedFiles no',
+        '/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" stash',
+        '/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" checkout --force',
+        '/usr/bin/git --git-dir="$HOME/.dotfiles/" --work-tree="$HOME" submodule --init',
+      ]
+
+  - name: 'Start a new zsh shell'
+    cmds: ['exec zsh -l']
