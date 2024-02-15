@@ -1,0 +1,18 @@
+- name: Install Stow
+  become: true
+  apt:
+    name:
+      - stow
+    state: present
+
+- name: Remove files with possible conflicts with Stow
+  loop:
+    - .zshrc
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/{{ item }}"
+    state: absent
+
+- name: Run stow
+  shell: "stow . --target {{ ansible_env.HOME }} --verbose=2"
+  register: result
+  changed_when: 'result.stderr is search("LINK: ")'
