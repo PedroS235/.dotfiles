@@ -7,6 +7,6 @@
 
 - name: "Tmux | Install TPM"
   ansible.builtin.git:
-    repo: git clone https://github.com/tmux-plugins/tpm
+    repo: https://github.com/tmux-plugins/tpm
     depth: 1
     dest: "{{ ansible_env.HOME }}/.tmux/plugins/tpm"
