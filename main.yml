@@ -17,3 +17,6 @@
     - name: Install nala
       import_role:
         name: nala
+    - name: Install Tmux
+      import_role:
+        name: tmux
