@@ -1,0 +1,16 @@
+# Git
+\.gitmodules
+\.git
+\.gitignore
+
+# Ansible
+^/roles/*
+^/ansible.cfg
+^/bootstrap.yml
+
+
+^/README.*
+^/LICENSE.*
+
+^/scripts
+^/bin
