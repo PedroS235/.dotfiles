@@ -8,6 +8,11 @@ fi
 DOTFILES_DIR="$HOME/.dotfiles/"
 SSH_DIR="$HOME/.ssh"
 USER_EMAIL="pmbs.123@gmail.com"
+PACKAGE_MANAGER="apt"
+
+if [ "$(command -v nala)" ]; then
+    PACKAGE_MANAGER="nala"
+fi
 
 print_i(){
     echo -e "\033[32m[INFO] - \033[0m${1}"
@@ -23,27 +28,28 @@ print_e(){
 
 if [ "$UPDATE_SYSTEM_PACKAGES" = true ]; then
     print_i "Updating System Packages"
-    sudo apt update -y && sudo apt upgrade -y
+    sudo "$PACKAGE_MANAGER" update && sudo "$PACKAGE_MANAGER" upgrade -y
+    sudo "$PACKAGE_MANAGER" autoremove -y
 fi
 
 if ! [ -x "$(command -v git)" ]; then
     print_i "Git not installed, installing..."
-    sudo apt install git -y
+    sudo "$PACKAGE_MANAGER" install git -y
 fi
 
 if ! [ -x "$(command -v curl)" ]; then
     print_i "Curl not installed, installing..."
-    sudo apt install curl -y
+    sudo "$PACKAGE_MANAGER" install curl -y
 fi
 
 if ! [ -x "$(command -v pip)" ]; then
     print_i "Pip not installed, installing..."
-    sudo apt install python3-pip -y
+    sudo "$PACKAGE_MANAGER" install python3-pip -y
 fi
 
 if ! [ -x "$(command -v python3 -m venv)" ]; then
     print_i "Python3 venv not installed, installing..."
-    sudo apt install python3-venv -y
+    sudo "$PACKAGE_MANAGER" install python3-venv -y
 fi
 
 if ! [ -x "$(command -v ansible)" ]; then
@@ -53,7 +59,7 @@ fi
 
 if ! [ -x "$(command -v xclip)" ]; then
     print_i "Xclip not installed, installing..."
-    sudo apt install xclip -y
+    sudo "$PACKAGE_MANAGER" install xclip -y
 fi
 
 if ! [ -f "$SSH_DIR/id_ed25519.pub" ]; then
