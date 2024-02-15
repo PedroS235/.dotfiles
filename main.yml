@@ -1,0 +1,19 @@
+- name: Dotfiles Config
+  hosts: localhost
+  gather_facts: true
+  become: true
+  become_user: "{{ lookup('env', 'USER') }}"
+
+  tasks:
+    - name: Stow Dotfiles
+      import_role:
+        name: stow
+    - name: Install FZF
+      import_role:
+        name: fzf
+    - name: Install lazygit
+      import_role:
+        name: lazygit
+    - name: Install nala
+      import_role:
+        name: nala
