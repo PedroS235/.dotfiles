@@ -73,10 +73,6 @@ else
     git clone git@github.com:PedroS235/.dotfiles.git
 fi
 
-cd "$DOTFILES_DIR" || exit 1
-
-ansible-playbook
-
 if [[ -f "$DOTFILES_DIR/requirements.yml" ]]; then
     cd "$DOTFILES_DIR" || exit 1
     ansible-galaxy install -r requirements.yml
