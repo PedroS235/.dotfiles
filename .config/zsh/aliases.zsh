@@ -31,3 +31,5 @@ alias penva='source .venv/bin/activate'
 alias get_esprs='. $HOME/export-esp.sh'
 
 alias zola='flatpak run org.getzola.zola'
+
+alias notes="nvim $SECOND_BRAIN_VAULT/0.\ ✨\ Dashboard.md"
