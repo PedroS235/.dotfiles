@@ -29,3 +29,5 @@ alias penva='source .venv/bin/activate'
 
 # EPS-rust dev
 alias get_esprs='. $HOME/export-esp.sh'
+
+alias zola='flatpak run org.getzola.zola'
