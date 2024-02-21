@@ -6,7 +6,8 @@
 # Ansible
 ^/roles/*
 ^/ansible.cfg
-^/bootstrap.yml
+^/main.yml
+^/requirements.yml
 
 
 ^/README.*
