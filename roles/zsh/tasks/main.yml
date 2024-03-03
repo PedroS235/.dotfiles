@@ -1,0 +1,3 @@
+- name: Run ZSH Tasks
+  ansible.builtin.import_tasks: ubuntu.yml
+  when: ansible_os_family == 'Debian'
