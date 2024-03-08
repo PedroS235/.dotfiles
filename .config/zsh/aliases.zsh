@@ -34,3 +34,5 @@ alias zola='flatpak run org.getzola.zola'
 
 alias cd='z'
 alias notes="nvim $SECOND_BRAIN_VAULT/0.\ ✨\ Dashboard.md"
+
+alias snv="sudo -E -s ~/.local/share/bob/nvim-bin/nvim"
