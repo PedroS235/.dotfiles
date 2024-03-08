@@ -6,6 +6,7 @@ plugins=(
     git
     zsh-autosuggestions
     zsh-syntax-highlighting
+    poetry
 )
 
 source "$HOME/.config/zsh/exports.zsh"
