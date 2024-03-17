@@ -19,5 +19,12 @@ style = "Bold"
 family = "GeistMono Nerd Font Mono"
 style = "Italic"
 
+[window]
+decorations = "None"
+startup_mode = "Maximized"
+
+[selection]
+save_to_clipboard = true
+
 [env]
 TERM = "xterm-256color"
