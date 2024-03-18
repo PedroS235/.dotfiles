@@ -1,0 +1,14 @@
+
+Host *
+    IdentityAgent ~/.1password/agent.sock
+    ForwardAgent yes
+
+
+HOST spot
+    HostName 192.168.80.3
+    User spot
+    Port 20022
+
+HOST piserver
+    HostName 192.168.178.149
+    User pi
