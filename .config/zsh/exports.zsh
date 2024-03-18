@@ -6,3 +6,4 @@ export XDG_CONFIG_HOME=$HOME/.config
 export DOTFILES=$HOME/.dotfiles
 export PATH=$PATH:$HOME/.local/share/bob/nvim-bin:$DOTFILES/bin/:$HOME/.local/bin
 export SECOND_BRAIN_VAULT="$HOME/MEGA/Second_Brain_Vault/"
+export EDITOR=nvim
