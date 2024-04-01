@@ -20,8 +20,8 @@ family = "GeistMono Nerd Font Mono"
 style = "Italic"
 
 [window]
-decorations = "None"
-startup_mode = "Maximized"
+decorations = "Full"
+# startup_mode = "Maximized"
 
 [selection]
 save_to_clipboard = true
