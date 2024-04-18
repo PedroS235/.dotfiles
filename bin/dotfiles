@@ -99,7 +99,7 @@ fi
 if ! [ -x "$(command -v cargo)" ]; then
     print_i "Rust not installed, installing..."
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    eval "$(~/.cargo/env)"
+    source "$HOME/.cargo/env" || exit 1
 fi
 
 if ! [ -x "$(command -v bob)" ]; then
@@ -127,7 +127,7 @@ fi
 
 if ! [ -x "$(command -v lolcat)" ]; then
     print_i "Lolcat not installed, installing..."
-    apt_install loclcat
+    apt_install lolcat
 fi
 
 if ! [ -x "$(command -v figlet)" ]; then
