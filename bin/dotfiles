@@ -178,7 +178,7 @@ fi
 if ! [ -x "$(command -v megasync)" ]; then
     print_i "Mega not installed, installing..."
     wget https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb 
-    sudo apt install ./megasync-xUbuntu_22.04_amd64.deb\"
+    sudo apt install ./megasync-xUbuntu_22.04_amd64.deb
     rm megasync-xUbuntu_22.04_amd64.deb
 fi
 
@@ -272,13 +272,12 @@ if [ -d "$DOTFILES_DIR" ]; then
     git pull
 else
     print_i "Cloning Dotfiles..."
-    git clone git@github.com:PedroS235/.dotfiles.git
+    git clone --recurse-submodules git@github.com:PedroS235/.dotfiles.git "$DOTFILES_DIR"
 fi
 
 if grep -q "ctrl:swapcaps" "/etc/default/keyboard"; then
     print_i "Swapping Caps Lock and Ctrl..."
     sudo sed -i 's/XKBOPTIONS=""/XKBOPTIONS="ctrl:swapcaps"/g' /etc/default/keyboard
-    sudo dpkg-reconfigure -phigh console-setup
 fi
 
 print_i "Setup is complete!"
