@@ -120,7 +120,7 @@ if ! [ -x "$(command -v zoxide)" ]; then
     cargo install zoxide --locked
 fi
 
-if ! [ -x "$(command -v ripgrep)" ]; then
+if ! [ -x "$(command -v rg)" ]; then
     print_i "Ripgrep not installed, installing..."
     apt_install ripgrep
 fi
@@ -177,7 +177,8 @@ fi
 
 if ! [ -x "$(command -v megasync)" ]; then
     print_i "Mega not installed, installing..."
-    wget https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb && sudo apt install \""$PWD"/megasync-xUbuntu_22.04_amd64.deb\"
+    wget https://mega.nz/linux/repo/xUbuntu_22.04/amd64/megasync-xUbuntu_22.04_amd64.deb 
+    sudo apt install ./megasync-xUbuntu_22.04_amd64.deb\"
     rm megasync-xUbuntu_22.04_amd64.deb
 fi
 
@@ -261,7 +262,8 @@ if ! [ -d "$SSH_DIR" ]; then
     print_i "1Password not installed, installing..."
     wget https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb -P /tmp
     apt_install /tmp/1password-latest.deb
-    read -r "1Password installed. Setup your account first..."
+    echo "1Password installed. Setup your account first. Press enter to continue..."
+    read
 fi
 
 if [ -d "$DOTFILES_DIR" ]; then
@@ -273,7 +275,7 @@ else
     git clone git@github.com:PedroS235/.dotfiles.git
 fi
 
-if grep -q 'XKBOPTIONS="ctrl:swapcaps"' "/etc/default/keyboard"; then
+if grep -q "ctrl:swapcaps" "/etc/default/keyboard"; then
     print_i "Swapping Caps Lock and Ctrl..."
     sudo sed -i 's/XKBOPTIONS=""/XKBOPTIONS="ctrl:swapcaps"/g' /etc/default/keyboard
     sudo dpkg-reconfigure -phigh console-setup
