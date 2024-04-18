@@ -8,6 +8,7 @@ fi
 DOTFILES_DIR="$HOME/.dotfiles/"
 SSH_DIR="$HOME/.ssh"
 PACKAGE_MANAGER="apt"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 apt_install(){
     sudo $PACKAGE_MANAGER install "$1" -y
@@ -139,6 +140,8 @@ if ! [ -x "$(command -v node)" ]; then
     print_i "Nodejs not installed, installing..."
     # installs NVM (Node Version Manager)
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+    export NVM_DIR="${XDG_CONFIG_HOME-}"
+    \. "$NVM_DIR/nvm.sh" # This loads nvm
     nvm install 20
 fi
 
