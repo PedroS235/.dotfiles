@@ -24,8 +24,8 @@ alias c='clear'
 
 alias sros='source /opt/ros/iron/setup.zsh'
 
-alias penv='python3 -m venv .venv'
-alias penva='source .venv/bin/activate'
+# alias penv='python3 -m venv .venv'
+# alias penva='source .venv/bin/activate'
 
 # EPS-rust dev
 alias get_esprs='. $HOME/export-esp.sh'

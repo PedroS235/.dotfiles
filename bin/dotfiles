@@ -41,6 +41,12 @@ if ! [ -x "$(command -v git)" ]; then
     apt_install git
 fi
 
+if ! [ -x "$(command -v stow)" ]; then
+    print_i "Stow not installed, installing..."
+    apt_install stow
+fi
+
+
 if ! [ -x "$(command -v curl)" ]; then
     print_i "Curl not installed, installing..."
     apt_install curl
@@ -49,10 +55,6 @@ fi
 if ! [ -x "$(command -v pip)" ]; then
     print_i "Pip not installed, installing..."
     apt_install python3-pip
-fi
-
-if ! [ -x "$(command -v python3 -m venv)" ]; then
-    print_i "Python3 venv not installed, installing..."
     apt_install python3-venv
 fi
 
@@ -140,8 +142,9 @@ if ! [ -x "$(command -v node)" ]; then
     print_i "Nodejs not installed, installing..."
     # installs NVM (Node Version Manager)
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-    export NVM_DIR="${XDG_CONFIG_HOME-}"
-    \. "$NVM_DIR/nvm.sh" # This loads nvm
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
     nvm install 20
 fi
 
@@ -276,6 +279,9 @@ if [ -d "$DOTFILES_DIR" ]; then
 else
     print_i "Cloning Dotfiles..."
     git clone --recurse-submodules git@github.com:PedroS235/.dotfiles.git "$DOTFILES_DIR"
+    rm $HOME/.zshrc
+    cd $DOTFILES_DIR
+    stow --adopt .
 fi
 
 if grep -q "ctrl:swapcaps" "/etc/default/keyboard"; then
