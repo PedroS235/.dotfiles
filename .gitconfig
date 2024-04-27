@@ -25,3 +25,7 @@
 	program = /opt/1Password/op-ssh-sign
 [commit]
 	gpgsign = true
+
+	# Enforce SSH
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
