@@ -1,5 +1,7 @@
 #!/bin/bash
 
+DISTRO=$(command lsb_release -i | awk -F':' '{print $2}' | xargs)
+
 UPDATE_SYSTEM_PACKAGES=true
 if [ "$1" == "--skip-update" ]; then
     UPDATE_SYSTEM_PACKAGES=false
@@ -7,16 +9,7 @@ fi
 
 DOTFILES_DIR="$HOME/.dotfiles/"
 SSH_DIR="$HOME/.ssh"
-PACKAGE_MANAGER="apt"
 export XDG_CONFIG_HOME="$HOME/.config"
-
-apt_install(){
-    sudo $PACKAGE_MANAGER install "$1" -y
-}
-
-if [ "$(command -v nala)" ]; then
-    PACKAGE_MANAGER="nala"
-fi
 
 print_i(){
     echo -e "\033[32m[INFO] - \033[0m${1}"
@@ -29,6 +22,26 @@ print_w(){
 print_e(){
     echo -e "\033[31m[ERROR] - \033[0m${1}"
 }
+
+# Check which distro is in use to decide which package manager to use
+if [[ $DISTRO == "Pop" || $DISTRO == "Ubuntu" || $DISTRO == "Debian" ]]; then
+    PACKAGE_MANAGER="apt"
+elif [[ $DISTRO -eq "Fedora" ]]; then
+    PACKAGE_MANAGER="dnf"
+else
+    print_e "Linux Distrubution not recognized"
+    exit 1
+fi
+
+
+apt_install(){
+    sudo $PACKAGE_MANAGER install "$1" -y
+}
+
+if [[ "$(command -v nala)" && $PACKAGE_MANAGER == "apt" ]]; then
+    PACKAGE_MANAGER="nala"
+fi
+
 
 if [ "$UPDATE_SYSTEM_PACKAGES" = true ]; then
     print_i "Updating System Packages"
@@ -281,6 +294,7 @@ else
     git clone --recurse-submodules git@github.com:PedroS235/.dotfiles.git "$DOTFILES_DIR"
     rm $HOME/.zshrc
     cd $DOTFILES_DIR
+    rm $HOME/.zshrc
     stow --adopt .
 fi
 
