@@ -1,6 +1,6 @@
 # - Theme
 # Using startship
-zstyle ':omz:plugins:nvm' lazy yes
+# zstyle ':omz:plugins:nvm' lazy yes
 
 # Plugins
 plugins=(
