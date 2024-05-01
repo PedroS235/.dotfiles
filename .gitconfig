@@ -26,6 +26,8 @@
 [commit]
 	gpgsign = true
 
-	# Enforce SSH
+# Enforce SSH
 [url "ssh://git@github.com/"]
-  insteadOf = https://github.com/
+	insteadOf = https://github.com/
+[safe]
+	directory = /home/pedros235/ros_repos
