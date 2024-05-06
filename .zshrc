@@ -20,4 +20,4 @@ source "$HOME/.config/zsh/zoxide.zsh"
 source "$HOME/.config/zsh/functions.zsh"
 source "$HOME/.config/zsh/pvenv.zsh"
 
-figlet PedroS | lolcat
+figlet $(cat /etc/hostname) | lolcat
