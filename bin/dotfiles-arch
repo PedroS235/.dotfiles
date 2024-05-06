@@ -1,0 +1,204 @@
+#!/bin/bash
+
+PACKAGE_MANAGER=pacman
+
+UPDATE_SYSTEM_PACKAGES=true
+if [ "$1" == "--skip-update" ]; then
+    UPDATE_SYSTEM_PACKAGES=false
+fi
+
+DOTFILES_DIR="$HOME/.dotfiles/"
+SSH_DIR="$HOME/.ssh"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+print_i(){
+    echo -e "\033[32m[INFO] - \033[0m${1}"
+}
+
+print_w(){
+    echo -e "\033[33m[WARN] - \033[0m${1}"
+}
+
+print_e(){
+    echo -e "\033[31m[ERROR] - \033[0m${1}"
+}
+
+
+apt_install(){
+    yes | sudo $PACKAGE_MANAGER -S "$1"
+}
+
+if [[ "$(command -v nala)" && $PACKAGE_MANAGER == "apt" ]]; then
+    PACKAGE_MANAGER="nala"
+fi
+
+
+if [ "$UPDATE_SYSTEM_PACKAGES" = true ]; then
+    print_i "Updating System Packages"
+    sudo pacman -Suy
+fi
+
+if ! [ -x "$(command -v git)" ]; then
+    print_i "Git not installed, installing..."
+    apt_install git
+fi
+
+if ! [ -x "$(command -v stow)" ]; then
+    print_i "Stow not installed, installing..."
+    apt_install stow
+fi
+
+
+if ! [ -x "$(command -v curl)" ]; then
+    print_i "Curl not installed, installing..."
+    apt_install curl
+fi
+
+if ! [ -x "$(command -v pip)" ]; then
+    print_i "Pip not installed, installing..."
+    apt_install python-pip
+fi
+
+if ! [ "$(command -v lazygit)" ]; then
+    print_i "Lazygit not installed, installing..."
+    apt_install lazygit
+
+fi
+
+if ! [ -x "$(command -v fzf)" ]; then
+    print_i "Fzf not installed, installing..."
+    apt_install fzf
+fi
+
+if ! [ -x "$(command -v tmux)" ]; then
+    print_i "Tmux not installed, installing..."
+    apt_install tmux
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
+if ! [ -x "$(command -v cargo)" ]; then
+    print_i "Rust not installed, installing..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    source "$HOME/.cargo/env" || exit 1
+fi
+
+if ! [ -x "$(command -v neofetch)" ]; then
+    print_i "Neofetch not installed, installing..."
+    apt_install neofetch
+fi
+
+if ! [ -x "$(command -v zoxide)" ]; then
+    print_i "Zoxide not installed, installing..."
+    cargo install zoxide --locked
+fi
+
+if ! [ -x "$(command -v rg)" ]; then
+    print_i "Ripgrep not installed, installing..."
+    apt_install ripgrep
+fi
+
+if ! [ -x "$(command -v lolcat)" ]; then
+    print_i "Lolcat not installed, installing..."
+    apt_install lolcat
+fi
+
+if ! [ -x "$(command -v figlet)" ]; then
+    print_i "Figlet not installed, installing..."
+    apt_install figlet
+fi
+
+if ! [ -x "$(command -v node)" ]; then
+    print_i "Nodejs not installed, installing..."
+    apt_install nodejs npm
+fi
+
+if ! [ -x "$(command -v starship)" ]; then
+    print_i "Starship not installed, installing..."
+    cargo install starship --locked
+fi
+
+if ! [ -d "$HOME/.fonts/GeistMono/" ]; then
+    print_i "Font GeistMono not installed, installing..."
+    mkdir -p "$HOME/.fonts/GeistMono/"
+    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/GeistMono.zip -P "$HOME/.fonts/GeistMono/"
+    cd "$HOME/.fonts/GeistMono/" || exit 1
+    unzip GeistMono.zip
+    rm GeistMono.zip
+fi
+
+if ! [ -x "$(command -v alacritty)" ]; then
+    print_i "Alacritty not installed, installing..."
+    apt_install alacritty
+fi
+
+if ! [ -x "$(command -v megasync)" ]; then
+    print_i "Mega not installed, installing..."
+    yay -S megasync 
+fi
+
+if ! [ -d "$HOME/.platformio/" ]; then
+    print_i "PlatformIO not installed, installing..."
+    pip install -U platformio
+fi
+
+if ! [ -x "$(command -v flatpak)" ]; then
+    print_i "Flatpak not installed, installing..."
+    apt_install flatpak
+fi
+
+if ! flatpak list | grep -q discord; then
+    print_i "Discord not installed, installing..."
+    flatpak install flathub com.discordapp.Discord -y
+fi
+
+if ! flatpak list | grep -q spotify; then
+    print_i "Spotify not installed, installing..."
+    flatpak install flathub com.spotify.Client -y
+fi
+
+if ! flatpak list | grep -q obsidian; then
+    print_i "Obsidian not installed, installing..."
+    flatpak install flathub md.obsidian.Obsidian -y
+fi
+
+if ! [ -x "$(command -v zsh)" ]; then
+    print_i "Zsh not installed, installing..."
+    apt_install zsh
+    chsh -s "$(which zsh)"
+fi
+
+if ! [ -d "$HOME/.oh-my-zsh/" ]; then
+    print_i "Oh-My-Zsh not installed, installing..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/PedroS235/ohmyzsh/master/tools/install.sh)"
+fi
+
+if ! [ -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions/" ]; then
+    print_i "zsh-autosuggestions not installed, installing..."
+    git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME"/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+fi
+
+if ! [ -d "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/" ]; then
+    print_i "zsh-syntax-highlighting not installed, installing..."
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME"/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+fi
+
+if ! [ -d "$SSH_DIR" ]; then
+    print_i "1Password not installed, installing..."
+    wget https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb -P /tmp
+    apt_install /tmp/1password-latest.deb
+    echo "1Password installed. Setup your account first. Press enter to continue..."
+    read
+fi
+
+if [ -d "$DOTFILES_DIR" ]; then
+    print_i "Dotfiles already installed, updating..."
+    cd "$DOTFILES_DIR" || exit 1
+    git pull
+else
+    print_i "Cloning Dotfiles..."
+    git clone --recurse-submodules git@github.com:PedroS235/.dotfiles.git "$DOTFILES_DIR"
+    rm $HOME/.zshrc
+    cd $DOTFILES_DIR
+fi
+
+print_i "Setup is complete!"
