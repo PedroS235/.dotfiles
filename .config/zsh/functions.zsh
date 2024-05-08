@@ -13,9 +13,9 @@ sudo() {
 }
 
 ros() {
-    docker ps | grep -q "ros2_iron"
+    docker ps | grep -q "ros-humble-env"
     if [ "$?" = 1 ]; then
-        docker start ros2_iron
+        docker start ros-humble-env
     fi
-    docker exec -ti ros2_iron bash
+    docker exec -ti  ros-humble-env bash
 }
