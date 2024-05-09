@@ -1,7 +1,5 @@
 #!/bin/bash
-. ~/.config/HyprV/hyprv.conf
-
-SET_BG = "$HOME/Pictures/Walpapers/v1-background-dark.jpg"
+SET_BG="$HOME/Pictures/Walpapers/v1-background-dark.jpg"
 
 restart_waybar() {
     #restart the waybar
@@ -11,16 +9,16 @@ restart_waybar() {
 
 set_current_background() {
     swww img $SET_BG
+    notify-send $SET_BG
 }
 
-switch_keyboard() {
-    # TODO: ctrlswap and winaltswap
-    hyprctl switchxkblayout $SET_KB next
-}
+# switch_keyboard() {
+#     # TODO: ctrlswap and winaltswap
+#     # hyprctl switchxkblayout $SET_KB next
+# }
 
 if [[ "$1" == "setbg" ]]; then
     set_current_background
-    update_theme
     restart_waybar
 elif [[ "$1" == "swkb" ]]; then
     switch_keyboard
