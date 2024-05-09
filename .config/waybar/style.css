@@ -139,6 +139,10 @@ tooltip {
     border-left: 0px;
 }
 
+#battery.critical {
+    color: #eba0ac;
+}
+
 #custom-weather {
     border-radius: 0px 10px 10px 0px;
     border-right: 0px;
