@@ -110,7 +110,7 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "  {signalStrength}/ipaddr%",
+        "format-wifi": "  {signalStrength}/{ipaddr}",
         "format-ethernet": "{ipaddr}",
         "tooltip-format": "{essid} - {ifname} via {gwaddr}",
         "format-linked": "{ifname} (No IP)",
