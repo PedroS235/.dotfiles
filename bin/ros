@@ -5,7 +5,7 @@ CONTAINER_NAME="ros-humble-env"
 
 docker images | grep -q $IMG_NAME
 if [ "$?" = 1 ]; then
-    CURRENT_PWD=pwd
+    CURRENT_PWD=$(pwd)
     cd $HOME/Repos/docker-images/ros_humble
     docker build -t $IMG_NAME --ssh default=$HOME/.ssh/id_ed25519 .
     cd $CURRENT_PWD
