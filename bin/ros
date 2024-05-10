@@ -1,0 +1,25 @@
+#!/bin/bash
+
+IMG_NAME="ros-humble-img"
+CONTAINER_NAME="ros-humble-env"
+
+docker images | grep -q $IMG_NAME
+if [ "$?" = 1 ]; then
+    CURRENT_PWD=pwd
+    cd $HOME/Repos/docker-images/ros_humble
+    docker build -t $IMG_NAME --ssh default=$HOME/.ssh/id_ed25519 .
+    cd $CURRENT_PWD
+fi
+
+docker ps --all | grep -q $CONTAINER_NAME
+if [ "$?" = 1 ]; then
+    docker run -it --name $CONTAINER_NAME --net=host --privileged -e DISPLAY=$DISPLAY -v ~/ros_repos/:/root/ros_ws:rw -v ~/.ssh:/root/.ssh $IMG_NAME
+fi
+
+docker ps | grep -q $CONTAINER_NAME
+if [ "$?" = 1 ]; then
+    xhost + # Enable GUI apps to run on local machine
+    docker start $CONTAINER_NAME
+fi
+docker exec -ti  ros-humble-env bash
+

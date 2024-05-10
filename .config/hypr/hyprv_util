@@ -9,7 +9,6 @@ restart_waybar() {
 
 set_current_background() {
     swww img $SET_BG
-    notify-send $SET_BG
 }
 
 # switch_keyboard() {
