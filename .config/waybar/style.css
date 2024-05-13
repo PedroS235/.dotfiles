@@ -44,6 +44,7 @@ tooltip {
     border-radius: 10px;
 }
 
+#custom-sys-update,
 #custom-weather,
 #window,
 #clock,
@@ -147,4 +148,9 @@ tooltip {
     border-radius: 0px 10px 10px 0px;
     border-right: 0px;
     margin-left: 0px;
+}
+
+#custom-sys-update {
+    border-radius: 10px;
+    margin-left: 10px;
 }

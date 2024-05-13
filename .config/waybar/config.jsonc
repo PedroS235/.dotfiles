@@ -9,7 +9,8 @@
     "modules-left": [
         "clock",
         "custom/weather",
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/sys-update"
     ],
     "modules-center": [
         "hyprland/window"
@@ -124,5 +125,13 @@
         "tooltip-format": "{device_alias}",
         "tooltip-format-connected": " {device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}"
+    },
+    "custom/sys-update": {
+        //shows the current weather and forecast
+        "tooltip": true,
+        "format": "{}",
+        "interval": 3200,
+        "exec": "~/.config/waybar/scripts/update-sys",
+        "return-type": "string"
     }
 }
