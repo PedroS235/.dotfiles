@@ -13,7 +13,7 @@ fi
 
 docker ps --all | grep -q $CONTAINER_NAME
 if [ "$?" = 1 ]; then
-    docker run -it --name $CONTAINER_NAME --net=host --privileged -e DISPLAY=$DISPLAY -v ~/ros_repos/:/root/ros_ws:rw -v ~/.ssh:/root/.ssh $IMG_NAME
+    docker run -it --name $CONTAINER_NAME --net=host --privileged -e DISPLAY=$DISPLAY -v ~/ros_repos/:/root/ros_ws:rw -v ~/.ssh:/root/.ssh_docker:rw $IMG_NAME
 fi
 
 docker ps | grep -q $CONTAINER_NAME
