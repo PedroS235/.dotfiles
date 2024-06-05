@@ -2,24 +2,35 @@
 
 IMG_NAME="ros-humble-img"
 CONTAINER_NAME="ros-humble-env"
+DOCKERFILE_DIR_PATH=$HOME/Repos/docker-images/ros_humble/
 
+# Build image if not existant
 docker images | grep -q $IMG_NAME
 if [ "$?" = 1 ]; then
+    echo "INFO: Image name <$IMG_NAME> not found. Building it..."
     CURRENT_PWD=$(pwd)
-    cd $HOME/Repos/docker-images/ros_humble
+    cd $DOCKERFILE_DIR_PATH
     docker build -t $IMG_NAME --ssh default=$HOME/.ssh/id_ed25519 .
     cd $CURRENT_PWD
 fi
 
+# Create the container if not existant
 docker ps --all | grep -q $CONTAINER_NAME
 if [ "$?" = 1 ]; then
-    docker run -it --name $CONTAINER_NAME --net=host --privileged -e DISPLAY=$DISPLAY -v ~/ros_repos/:/root/ros_ws:rw -v ~/.ssh:/root/.ssh_docker:rw $IMG_NAME
+    echo "INFO: Container name <$CONTAINER_NAME> not found. Creating it..."
+    docker run -it --name $CONTAINER_NAME \
+        --net=host --privileged -e DISPLAY=$DISPLAY \
+        -v ~/ros_repos/:/root/ros_ws:rw \
+        -v ~/.ssh:/root/.ssh_docker:rw $IMG_NAME
 fi
 
+# Start container if not already started.
 docker ps | grep -q $CONTAINER_NAME
 if [ "$?" = 1 ]; then
-    xhost + # Enable GUI apps to run on local machine
+    echo "INFO: Container name $CONTAINER_NAME not running. Starting it..."
+    xhost +local:docker > /dev/null # Enable GUI apps to run on local machine
     docker start $CONTAINER_NAME
 fi
-docker exec -ti $CONTAINER_NAME bash
 
+# Execute the container
+docker exec -ti $CONTAINER_NAME bash
