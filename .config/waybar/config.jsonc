@@ -7,10 +7,12 @@
     "gtk-layer-shell": true,
     "height": 50,
     "modules-left": [
+        "custom/power_btn",
         "clock",
         "custom/weather",
         "hyprland/workspaces",
-        "custom/sys-update"
+        "custom/sys-update",
+        "idle_inhibitor"
     ],
     "modules-center": [
         "hyprland/window"
@@ -39,6 +41,14 @@
     "tray": {
         "icon-size": 18,
         "spacing": 10
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "󰛐",
+            "deactivated": "󰛑"
+        },
+        "tooltip": true
     },
     "backlight": {
         "device": "intel_backlight",
@@ -133,5 +143,10 @@
         "interval": 3200,
         "exec": "~/.config/waybar/scripts/update-sys",
         "return-type": "string"
+    },
+    "custom/power_btn": {
+        "format": " ",
+        "on-click": "sh -c '(wlogout --protocol layer-shell)' & disown",
+        "tooltip": false
     }
 }

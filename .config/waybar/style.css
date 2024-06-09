@@ -44,6 +44,7 @@ tooltip {
     border-radius: 10px;
 }
 
+#custom-power_btn,
 #custom-sys-update,
 #custom-weather,
 #window,
@@ -55,6 +56,7 @@ tooltip {
 #temperature,
 #workspaces,
 #tray,
+#idle_inhibitor,
 #backlight {
     background: #1e1e2e;
     opacity: 0.8;
@@ -150,6 +152,8 @@ tooltip {
     margin-left: 0px;
 }
 
+#custom-power_btn,
+#idle_inhibitor,
 #custom-sys-update {
     border-radius: 10px;
     margin-left: 10px;
