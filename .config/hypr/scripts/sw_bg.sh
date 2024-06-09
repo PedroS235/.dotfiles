@@ -12,6 +12,6 @@ set_current_background() {
 }
 
 if [[ "$1" == "setbg" ]]; then
-    set_current_background
+    # set_current_background
     restart_waybar
 fi
