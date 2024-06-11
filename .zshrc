@@ -7,8 +7,7 @@ plugins=(
     git
     zsh-autosuggestions
     zsh-syntax-highlighting
-    poetry
-    nvm
+    fzf-tab
 )
 
 source "$HOME/.config/zsh/exports.zsh"
