@@ -19,4 +19,5 @@ source "$HOME/.config/zsh/zoxide.zsh"
 source "$HOME/.config/zsh/pvenv.zsh"
 source "$HOME/.config/zsh/func.zsh"
 
-figlet $(cat /etc/hostname) | lolcat
+# figlet $(cat /etc/hostname) | lolcat
+fastfetch -c $HOME/.config/fastfetch/simple.jsonc
