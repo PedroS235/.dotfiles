@@ -1,7 +1,7 @@
 import = [
-  "~/.config/alacritty/themes/catppuccin/catppuccin-mocha.toml",
-  # "~/.config/alacritty/themes/tokyonight.toml"
-  # "~/.config/alacritty/themes/dracula.toml"
+  # "~/.config/alacritty/themes/catppuccin/catppuccin-mocha.toml",
+  "~/.config/alacritty/themes/tokyonight.toml",
+  #"~/.config/alacritty/themes/dracula.toml",
 ]
 
 [font]
