@@ -33,4 +33,4 @@ alias snv="sudo -E -s ~/.local/share/bob/nvim-bin/nvim"
 alias webserver='python3 -m http.server -b localhost 8000'
 
 # Exports ESP IDF Variables
-alias get_idf='. $HOME/tools/esp/esp-idf/export.sh'
+alias get_idf='. $HOME/Tools/esp/esp-idf/export.sh'
