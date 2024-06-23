@@ -5,62 +5,66 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 50,
     "modules-left": [
-        "custom/power_btn",
-        "clock",
-        "custom/weather",
         "hyprland/workspaces",
-        "custom/sys-update",
-        "idle_inhibitor"
-    ],
-    "modules-center": [
         "hyprland/window"
     ],
-    "modules-right": [
-        "network",
-        "bluetooth",
-        "temperature",
-        "battery",
-        "backlight",
-        "pulseaudio",
-        "pulseaudio#microphone",
-        "tray"
-    ],
-    "include": [
-        "~/.config/waybar/conf/mesu.jsonc"
-    ],
-    "hyprland/window": {
-        "format": "{}"
-    },
     "hyprland/workspaces": {
-        "disable-scroll": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": " ",
+            "2": " ",
+            "9": " ",
+            "0": " ",
+            "active": " ",
+            "default": " "
+        },
         "all-outputs": true,
         "on-click": "activate"
     },
-    "tray": {
-        "icon-size": 18,
-        "spacing": 10
+    "hyprland/window": {
+        "format": "{title}",
+        "rewrite": {
+            "(.*) — Mozilla Firefox": "$1"
+        }
     },
+    "modules-center": [
+        "idle_inhibitor",
+        "clock",
+        "custom/weather"
+    ],
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
             "activated": "󰛐 ",
-            "deactivated": "󰛑 "
+            "deactivated": "󰈉 "
         },
         "tooltip": true
     },
-    "backlight": {
-        "device": "intel_backlight",
-        "format": "{icon} {percent}%",
-        "format-icons": [
-            "󰃞",
-            "󰃟",
-            "󰃠"
-        ],
-        "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
-        "on-scroll-down": "~/.config/waybar/scripts/brightness --dec",
-        "min-length": 6
+    "clock": {
+        "format": "🕑 {:%R 📅 %d/%m}",
+        "tooltip-format": "{: %A, %e %B %Y}"
+    },
+    "custom/weather": {
+        "tooltip": true,
+        "format": "{}",
+        "interval": 30,
+        "exec": "~/.config/waybar/scripts/waybar-wttr-c.py",
+        "return-type": "json"
+    },
+    "modules-right": [
+        "tray",
+        "battery",
+        "load",
+        "memory",
+        "backlight",
+        "pulseaudio",
+        "pulseaudio#microphone",
+        "custom/power_btn"
+    ],
+    "tray": {
+        "icon-size": 20,
+        "spacing": 5
     },
     "battery": {
         "states": {
@@ -86,10 +90,30 @@
             "󰁹"
         ]
     },
+    "load": {
+        "format": " {load1}%",
+        "max-length": 10
+    },
+    "memory": {
+        "interval": 30,
+        "format": "  {used:0.1f}G\n  {total:0.1f}G"
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} ",
+        "format-icons": [
+            "󰃞",
+            "󰃟",
+            "󰃠"
+        ],
+        "on-scroll-up": "~/.config/waybar/scripts/brightness --inc",
+        "on-scroll-down": "~/.config/waybar/scripts/brightness --dec",
+        "min-length": 6
+    },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
+        "format": "{icon} ",
         "tooltip": false,
-        "format-muted": " Muted",
+        "format-muted": " ",
         "on-click": "~/.config/waybar/scripts/volume --toggle",
         "on-click-right": "pavucontrol",
         "on-scroll-up": "~/.config/waybar/scripts/volume --inc",
@@ -111,38 +135,13 @@
     },
     "pulseaudio#microphone": {
         "format": "{format_source}",
-        "format-source": " {volume}%",
-        "format-source-muted": "  Muted",
+        "format-source": "",
+        "format-source-muted": "  ",
         "on-click": "~/.config/waybar/scripts/volume --toggle-mic",
         "on-click-right": "pavucontrol",
         "on-scroll-up": "~/.config/waybar/scripts/volume --mic-inc",
         "on-scroll-down": "~/.config/waybar/scripts/volume --mic-dec",
         "scroll-step": 5
-    },
-    "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "  {signalStrength}% | {ipaddr}",
-        "format-ethernet": "{ipaddr}",
-        "tooltip-format": "{essid} - {ifname} via {gwaddr}",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
-    },
-    "bluetooth": {
-        "format": " {status}",
-        "format-disabled": "", // an empty format will hide the module
-        "format-connected": " {num_connections}",
-        "tooltip-format": "{device_alias}",
-        "tooltip-format-connected": " {device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}"
-    },
-    "custom/sys-update": {
-        //shows the current weather and forecast
-        "tooltip": true,
-        "format": "{}",
-        "interval": 3200,
-        "exec": "~/.config/waybar/scripts/update-sys",
-        "return-type": "string"
     },
     "custom/power_btn": {
         "format": " ",

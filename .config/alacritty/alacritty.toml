@@ -21,8 +21,7 @@ style = "Italic"
 
 [window]
 blur = true
-opacity = 0.9
-# startup_mode = "Maximized"
+opacity = 0.8
 
 [selection]
 save_to_clipboard = true
