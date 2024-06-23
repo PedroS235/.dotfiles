@@ -5,12 +5,6 @@
 }
 
 {
-    "label" : "hibernate",
-    "action" : "systemctl hibernate",
-    "text" : "Hibernate"
-}
-
-{
     "label" : "logout",
     "action" : "hyprctl dispatch exit 0",
     "text" : "Logout"
