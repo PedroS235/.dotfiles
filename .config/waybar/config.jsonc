@@ -12,12 +12,12 @@
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "1": " ",
-            "2": " ",
-            "9": " ",
-            "0": " ",
+            // "1": " ",
+            // "2": " ",
+            // "9": " ",
+            // "0": " ",
             "active": " ",
-            "default": " "
+            // "default": " "
         },
         "all-outputs": true,
         "on-click": "activate"
