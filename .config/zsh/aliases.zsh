@@ -19,9 +19,6 @@ alias pio_act="source $HOME/.platformio/penv/bin/activate"
 
 alias c='clear'
 
-# EPS-rust dev
-alias get_esprs='. $HOME/export-esp.sh'
-
 alias zola='flatpak run org.getzola.zola'
 
 alias cd='z'
@@ -34,3 +31,5 @@ alias webserver='python3 -m http.server -b localhost 8000'
 
 # Exports ESP IDF Variables
 alias get_idf='. $HOME/Tools/esp/esp-idf/export.sh'
+# EPS-rust dev
+alias get_esprs='. $HOME/export-esp.sh'
