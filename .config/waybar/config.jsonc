@@ -42,8 +42,7 @@
         "tooltip": true
     },
     "clock": {
-        "format": "🕑 {:%R 📅 %d/%m}",
-        "tooltip-format": "{: %A, %e %B %Y}"
+        "format": "🕑 {:%R | 🗓️ %d/%m/%Y}"
     },
     "custom/weather": {
         "tooltip": true,
