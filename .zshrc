@@ -7,7 +7,7 @@ plugins=(
 	git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
-	fzf-tab
+	# fzf-tab
 )
 
 source "$HOME/.config/zsh/exports.zsh"

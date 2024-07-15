@@ -1,7 +1,6 @@
 [user]
 	email = pmbs.123@gmail.com
 	name = Pedro Soares
-	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBryx6YRsopRUtU0C0CQ54HaPE45h+dih2XOIdA9+IFa
 [init]
 	defaultBranch = main
 [core]
@@ -21,10 +20,6 @@
 	rebase = false
 [gpg]
 	format = ssh
-[gpg "ssh"]
-	program = /opt/1Password/op-ssh-sign
-[commit]
-	gpgsign = true
 
 # Enforce SSH
 #[url "ssh://git@github.com/"]
