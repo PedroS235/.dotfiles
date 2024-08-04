@@ -26,7 +26,7 @@ config.window_padding = {
 }
 
 config.window_close_confirmation = "NeverPrompt"
-config.leader = { key = "a", mods = "CTRL" }
+config.leader = { key = " ", mods = "CTRL" }
 config.hide_tab_bar_if_only_one_tab = true
 
 config.keys = {
