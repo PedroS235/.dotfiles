@@ -7,3 +7,11 @@ export DOTFILES=$HOME/.dotfiles
 export PATH=$PATH:$HOME/.local/share/bob/nvim-bin:$DOTFILES/bin/:$HOME/.local/bin:$HOME/.cargo/bin
 export SECOND_BRAIN_VAULT="$HOME/MEGA/Second_Brain_Vault/"
 export EDITOR=nvim
+# pnpm
+export PNPM_HOME="/home/pedros/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
