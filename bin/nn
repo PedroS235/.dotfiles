@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Create a new Obsidian note
+
+if [ -z "$1" ]; then
+    echo "Error: A file name must be set."
+    exit 1
+fi
+
+file_name=$(echo "$1" | tr ' ' '-')
+cd $SECOND_BRAIN_VAULT/
+
+cp "${SECOND_BRAIN_VAULT}/99_Templates/NewNoteTemplate.md" "0_Inbox/${file_name}.md"
+nvim "0_Inbox/${file_name}.md"
