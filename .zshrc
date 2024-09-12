@@ -89,7 +89,7 @@ alias cd='z'
 alias notes="cd $SECOND_BRAIN_VAULT && nvim $SECOND_BRAIN_VAULT/0_Dashboard.md"
 
 # Start a webserver on http://localhost:8000
-alias webserver='python3 -m http.server -b localhost 8000'
+alias webserver='python3 -m http.server'
 
 # PlatformIO
 alias pio_act="source $HOME/.platformio/penv/bin/activate"
@@ -99,6 +99,9 @@ alias get_idf='. $HOME/Tools/esp/esp-idf/export.sh'
 
 # EPS-rust dev
 alias get_esprs='. $HOME/export-esp.sh'
+
+# PNPM
+alias pn=pnpm
 
 
 # -------------- Vim Mode --------------
