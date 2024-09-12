@@ -89,7 +89,7 @@ alias cd='z'
 alias notes="cd $SECOND_BRAIN_VAULT && nvim $SECOND_BRAIN_VAULT/0_Dashboard.md"
 
 # Start a webserver on http://localhost:8000
-alias webserver='python3 -m http.server'
+alias webserver='python3 -m http.server -b "127.0.0.1" 8000'
 
 # PlatformIO
 alias pio_act="source $HOME/.platformio/penv/bin/activate"
