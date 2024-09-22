@@ -6,6 +6,7 @@ plugins=(
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	# fzf-tab
+	poetry
 )
 
 export ZSH="$HOME/.oh-my-zsh" # Path to oh-my-zsh folder
@@ -37,7 +38,7 @@ path=(
     $path
     $HOME/.local/bin
     $DOTFILES/bin
-	$HOME/.cargo/bin
+    $HOME/.cargo/bin
 )
 
 # Remove duplicate entries and non-existent directories
