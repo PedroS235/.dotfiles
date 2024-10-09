@@ -132,6 +132,15 @@ tooltip {
     border-bottom: 2px solid #7aa2f7;
 }
 
+#temperature {
+    background: #15161e;
+    color: #fff;
+    margin: 5px 5px 5px 5px;
+    padding: 0px 8px 0px 8px;
+    border-radius: 10px;
+    border-bottom: 2px solid #7aa2f7;
+}
+
 #memory {
     background: #15161e;
     color: #fff;
