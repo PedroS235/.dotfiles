@@ -47,7 +47,7 @@ create_new_note() {
 open_note() {
     path=$1
     cd $SECOND_BRAIN_VAULT
-    $EDITOR $path
+    nvim $path
 }
 
 create_new_note_prompt() {
@@ -67,6 +67,10 @@ new)
         exit 0
     fi
     open_note "$SECOND_BRAIN_VAULT/$note"
+    ;;
+today)
+    cd $SECOND_BRAIN_VAULT
+    nvim -c ObsidianToday
     ;;
 *)
     echo "Unknown command: $1. Available commands are 'new' and 'open'."
