@@ -104,6 +104,8 @@ alias get_esprs='. $HOME/export-esp.sh'
 # PNPM
 alias pn=pnpm
 
+# File Manager
+alias open="nautilus"
 
 # -------------- Vim Mode --------------
 
