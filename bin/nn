@@ -1,14 +1,74 @@
 #!/bin/bash
 
-# Create a new Obsidian note
+TEMPLATE_PATH=$SECOND_BRAIN_VAULT/99_Templates
+INBOX_PATH=$SECOND_BRAIN_VAULT/0_Inbox
 
-if [ -z "$1" ]; then
-    echo "Error: A file name must be set."
-    exit 1
-fi
+find_note() {
+    # fd . --type f --extension md --exclude 98_Assets --exclude 99_Templates $SECOND_BRAIN_VAULT | sed 's|.*/Second_Brain_Vault/||' | fzf --height '-5' --preview 'bat --color=always {}'
+    fd . --type f --extension md --exclude 98_Assets --exclude 99_Templates $SECOND_BRAIN_VAULT |
+        sed 's|.*/Second_Brain_Vault/||' |
+        fzf --height '-5' --preview 'bat --color=always $SECOND_BRAIN_VAULT/{}' --preview-window 'down,+10'
+}
 
-file_name=$(echo "$1" | tr ' ' '-')
-cd $SECOND_BRAIN_VAULT/
+select_template() {
+    ls $TEMPLATE_PATH | fzf --prompt "> Note Type"
+}
 
-touch "0_Inbox/${file_name}.md"
-nvim "0_Inbox/${file_name}.md"
+slugify() {
+    echo "$1" | tr '[:upper:]' '[:lower:]' | tr ' ' '-'
+}
+
+deslugify() {
+    echo "$1" | tr '-' ' ' | sed -e 's/\b\(.\)/\u\1/g'
+}
+
+create_new_note() {
+    # $1: name $2: template
+    name=$(slugify "$1")
+    title=$(deslugify "$name")
+
+    file_path="$INBOX_PATH/$name.md"
+    counter=1
+
+    # Check if file exists, and if so, append -1, -2, etc.
+    while [[ -e "$file_path" ]]; do
+        file_path="$INBOX_PATH/${name}-${counter}.md"
+        counter=$((counter + 1))
+    done
+
+    cp "$TEMPLATE_PATH/$2" "$file_path"
+
+    # Replace {{title}} with the actual title
+    sed -i "s|{{title}}|$title|" "$file_path"
+
+    echo "$file_path"
+}
+
+open_note() {
+    path=$1
+    cd $SECOND_BRAIN_VAULT
+    $EDITOR $path
+}
+
+create_new_note_prompt() {
+    printf "Note name: "
+    read -r note_name
+    open_note $(create_new_note "$note_name" $(select_template))
+}
+
+# Argument parser
+case "$1" in
+new)
+    create_new_note_prompt
+    ;;
+"" | open)
+    note=$(find_note)
+    if [[ $note == "" ]]; then
+        exit 0
+    fi
+    open_note "$SECOND_BRAIN_VAULT/$note"
+    ;;
+*)
+    echo "Unknown command: $1. Available commands are 'new' and 'open'."
+    ;;
+esac
