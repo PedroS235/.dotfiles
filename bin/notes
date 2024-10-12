@@ -4,14 +4,13 @@ TEMPLATE_PATH=$SECOND_BRAIN_VAULT/99_Templates
 INBOX_PATH=$SECOND_BRAIN_VAULT/0_Inbox
 
 find_note() {
-    # fd . --type f --extension md --exclude 98_Assets --exclude 99_Templates $SECOND_BRAIN_VAULT | sed 's|.*/Second_Brain_Vault/||' | fzf --height '-5' --preview 'bat --color=always {}'
     fd . --type f --extension md --exclude 98_Assets --exclude 99_Templates $SECOND_BRAIN_VAULT |
         sed 's|.*/Second_Brain_Vault/||' |
-        fzf --height '-5' --preview 'bat --color=always $SECOND_BRAIN_VAULT/{}' --preview-window 'down,+10'
+        fzf --tmux --height '-5' --preview 'bat --color=always $SECOND_BRAIN_VAULT/{}' --preview-window 'down,+10'
 }
 
 select_template() {
-    ls $TEMPLATE_PATH | fzf --prompt "> Note Type"
+    ls $TEMPLATE_PATH | fzf --tmux --prompt "> Note Type"
 }
 
 slugify() {
@@ -26,6 +25,10 @@ create_new_note() {
     # $1: name $2: template
     name=$(slugify "$1")
     title=$(deslugify "$name")
+
+    if [[ name == "" || $2 == "" ]]; then
+        exit 0
+    fi
 
     file_path="$INBOX_PATH/$name.md"
     counter=1
@@ -71,6 +74,9 @@ new)
 today)
     cd $SECOND_BRAIN_VAULT
     nvim -c ObsidianToday
+    ;;
+obs)
+    obsidian &
     ;;
 *)
     echo "Unknown command: $1. Available commands are 'new' and 'open'."
