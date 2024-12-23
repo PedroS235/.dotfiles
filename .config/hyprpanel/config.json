@@ -1,0 +1,113 @@
+{
+  "bar.customModules.updates.pollingInterval": 21600000,
+  "scalingPriority": "hyprland",
+  "theme.bar.floating": false,
+  "theme.bar.buttons.enableBorders": false,
+  "theme.bar.location": "top",
+  "theme.bar.border.location": "none",
+  "bar.launcher.autoDetectIcon": false,
+  "theme.bar.buttons.dashboard.enableBorder": false,
+  "theme.bar.buttons.workspaces.enableBorder": false,
+  "bar.workspaces.show_icons": false,
+  "bar.workspaces.show_numbered": false,
+  "bar.workspaces.numbered_active_indicator": "underline",
+  "theme.bar.buttons.windowtitle.enableBorder": false,
+  "bar.windowtitle.icon": true,
+  "bar.battery.hideLabelWhenFull": false,
+  "bar.clock.showIcon": false,
+  "theme.bar.buttons.notifications.enableBorder": false,
+  "bar.notifications.show_total": false,
+  "bar.notifications.hideCountWhenZero": false,
+  "menus.clock.time.military": true,
+  "menus.clock.weather.location": "Luxembourg",
+  "menus.clock.weather.unit": "metric",
+  "theme.bar.buttons.modules.ram.enableBorder": false,
+  "bar.customModules.weather.unit": "imperial",
+  "theme.font.name": "Ubuntu Nerd Font",
+  "menus.transition": "crossfade",
+  "bar.autoHide": "never",
+  "bar.workspaces.showWsIcons": true,
+  "bar.workspaces.showApplicationIcons": true,
+  "bar.workspaces.applicationIconOncePerWorkspace": true,
+  "bar.workspaces.workspaces": 5,
+  "bar.windowtitle.custom_title": true,
+  "bar.windowtitle.label": true,
+  "bar.network.showWifiInfo": false,
+  "theme.bar.buttons.systray.enableBorder": false,
+  "theme.bar.buttons.media.enableBorder": false,
+  "bar.media.show_label": true,
+  "bar.media.truncation": true,
+  "menus.media.displayTimeTooltip": false,
+  "menus.media.displayTime": false,
+  "notifications.timeout": 7000,
+  "theme.osd.location": "right",
+  "theme.osd.orientation": "vertical",
+  "menus.dashboard.stats.enable_gpu": false,
+  "menus.dashboard.directories.enabled": false,
+  "wallpaper.image": "/home/pedros/MEGA/3.%20Resources/Wallpapers/colorful-skull-wallpaper.png",
+  "menus.dashboard.shortcuts.left.shortcut1.command": "zen-browser",
+  "menus.dashboard.shortcuts.left.shortcut1.icon": "",
+  "menus.dashboard.shortcuts.left.shortcut3.command": "webcord",
+  "menus.dashboard.shortcuts.left.shortcut4.command": "rofi -show drun",
+  "menus.dashboard.shortcuts.right.shortcut3.command": "hyprshot -m window",
+  "theme.notification.scaling": 100,
+  "theme.font.size": "1.1rem",
+  "bar.customModules.ram.icon": "",
+  "bar.layouts": {
+    "0": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle",
+        "updates"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "network",
+        "bluetooth",
+        "battery",
+        "systray",
+        "clock",
+        "notifications",
+        "power"
+      ]
+    },
+    "1": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "clock",
+        "notifications"
+      ]
+    },
+    "2": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "clock",
+        "notifications"
+      ]
+    }
+  },
+  "notifications.position": "top right",
+  "menus.clock.weather.key": "950ae8ba786545cca7d180042242312",
+  "bar.clock.format": "%a %b %d  %H:%M:%S",
+  "bar.clock.showTime": true
+}
