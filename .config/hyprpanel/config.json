@@ -1,7 +1,7 @@
 {
   "bar.customModules.updates.pollingInterval": 1440000,
   "scalingPriority": "hyprland",
-  "theme.bar.floating": false,
+  "theme.bar.floating": true,
   "theme.bar.buttons.enableBorders": false,
   "theme.bar.location": "top",
   "theme.bar.border.location": "none",
@@ -26,8 +26,8 @@
   "theme.font.name": "Ubuntu Nerd Font",
   "menus.transition": "crossfade",
   "bar.autoHide": "never",
-  "bar.workspaces.showWsIcons": true,
-  "bar.workspaces.showApplicationIcons": true,
+  "bar.workspaces.showWsIcons": false,
+  "bar.workspaces.showApplicationIcons": false,
   "bar.workspaces.applicationIconOncePerWorkspace": true,
   "bar.workspaces.workspaces": 5,
   "bar.windowtitle.custom_title": true,
@@ -42,7 +42,7 @@
   "notifications.timeout": 7000,
   "theme.osd.location": "right",
   "theme.osd.orientation": "vertical",
-  "menus.dashboard.stats.enable_gpu": true,
+  "menus.dashboard.stats.enable_gpu": false,
   "menus.dashboard.directories.enabled": false,
   "wallpaper.image": "/home/pedros/MEGA/3.%20Resources/Wallpapers/biker-helmet-neon-wallpaper.jpg",
   "menus.dashboard.shortcuts.left.shortcut1.command": "zen-browser",
@@ -59,7 +59,8 @@
         "dashboard",
         "workspaces",
         "windowtitle",
-        "updates"
+        "updates",
+        "hypridle"
       ],
       "middle": [
         "media"
@@ -469,5 +470,7 @@
   "theme.bar.buttons.modules.hypridle.border": "#f7768e",
   "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Zen Browser",
   "theme.bar.menus.opacity": 100,
-  "menus.dashboard.powermenu.avatar.image": "/home/pedros/.dotfiles/Wallpapers/Avatars/avatar-1.png"
+  "menus.dashboard.powermenu.avatar.image": "/home/pedros/.dotfiles/Wallpapers/Avatars/avatar-1.png",
+  "theme.bar.transparent": true,
+  "theme.bar.buttons.workspaces.smartHighlight": true
 }
