@@ -1,5 +1,10 @@
 font-size = 14
 theme = tokyonight
 background-opacity = 0.8
+window-decoration = true
+copy-on-select = true
+confirm-close-surface = false
 
-
+# Workaround for slow start up times
+gtk-single-instance = true
+#quit-after-last-window-closed = false
