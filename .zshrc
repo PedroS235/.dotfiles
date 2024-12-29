@@ -6,7 +6,6 @@ plugins=(
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	# fzf-tab
-	poetry
 )
 
 export ZSH="$HOME/.oh-my-zsh" # Path to oh-my-zsh folder
@@ -86,8 +85,10 @@ alias c='clear'
 
 alias cd='z'
 
+alias ls="eza --icons auto"
+
 # Start a webserver on http://localhost:8000
-alias webserver='python3 -m http.server -b "127.0.0.1" 8000'
+alias webserver='python3 -m http.server -b "127.0.0.1" 8080'
 
 # PlatformIO
 alias pio_act="source $HOME/.platformio/penv/bin/activate"
