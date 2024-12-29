@@ -26,8 +26,8 @@
   "theme.font.name": "Ubuntu Nerd Font",
   "menus.transition": "crossfade",
   "bar.autoHide": "never",
-  "bar.workspaces.showWsIcons": false,
-  "bar.workspaces.showApplicationIcons": false,
+  "bar.workspaces.showWsIcons": true,
+  "bar.workspaces.showApplicationIcons": true,
   "bar.workspaces.applicationIconOncePerWorkspace": true,
   "bar.workspaces.workspaces": 5,
   "bar.windowtitle.custom_title": true,
@@ -472,5 +472,11 @@
   "theme.bar.menus.opacity": 100,
   "menus.dashboard.powermenu.avatar.image": "/home/pedros/.dotfiles/Wallpapers/Avatars/avatar-1.png",
   "theme.bar.transparent": true,
-  "theme.bar.buttons.workspaces.smartHighlight": true
+  "theme.bar.buttons.workspaces.smartHighlight": true,
+  "bar.workspaces.scroll_speed": 0,
+  "bar.workspaces.applicationIconMap": {
+    "zen-beta": "",
+    "com.mitchellh.ghostty": "",
+    "com.obsproject.Studio": ""
+  }
 }
