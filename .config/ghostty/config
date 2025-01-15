@@ -1,7 +1,7 @@
 font-size = 14
 theme = tokyonight
 background-opacity = 0.8
-window-decoration = true
+window-decoration = false
 copy-on-select = true
 confirm-close-surface = false
 
