@@ -10,7 +10,7 @@ sudo pacman -S --noconfirm --needed waybar python-dbus
 
 
 # Check if Nvidia GPU is available
-if lspci -k | grep -A 2 -E "(VGA|3D|NVIDIA)" >/dev/null; then
+if lspci -k | grep -A 2 -E "NVIDIA" >/dev/null; then
     sudo pacman -S --noconfirm --needed nvidia-dkms nvidia-utils lib32-nvidia-utils egl-wayland
 
     # Path to the mkinitcpio.conf file
