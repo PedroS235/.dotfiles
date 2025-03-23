@@ -3,7 +3,7 @@
 # Hyprland
 sudo pacman -S --noconfirm --needed hyprland hyprutils hypridle hyprpaper hyprlock \
     xdg-desktop-portal-hyprland polkit-gnome wofi wl-clipboard cliphist \
-    pipewire wireplumber qt5-wayland qt6-wayland udiskie
+    pipewire wireplumber qt5-wayland qt6-wayland udiskie hyprpolkitagent
 
 # Bars
 sudo pacman -S --noconfirm --needed waybar python-dbus
