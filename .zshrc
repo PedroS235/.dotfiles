@@ -97,7 +97,7 @@ alias pio_act="source $HOME/.platformio/penv/bin/activate"
 alias get_idf='. $HOME/Tools/esp/esp-idf/export.sh'
 
 # EPS-rust dev
-alias get_esprs='. $HOME/export-esp.sh'
+alias get_esprs='. $HOME/Tools/esp/esp-idf/export.sh'
 
 # PNPM
 alias pn=pnpm
@@ -129,3 +129,10 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 # -------------- End --------------
 
 fastfetch -c $HOME/.config/fastfetch/simple.jsonc
+
+# bun completions
+[ -s "/home/pedros/.bun/_bun" ] && source "/home/pedros/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
