@@ -2,10 +2,10 @@
 
 # Plugins
 plugins=(
-	git
-	zsh-autosuggestions
-	zsh-syntax-highlighting
-	# fzf-tab
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    # fzf-tab
 )
 
 export ZSH="$HOME/.oh-my-zsh" # Path to oh-my-zsh folder
@@ -128,11 +128,27 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # -------------- End --------------
 
-fastfetch -c $HOME/.config/fastfetch/simple.jsonc
 
-# bun completions
+# -------------- Bun --------------
+
 [ -s "/home/pedros/.bun/_bun" ] && source "/home/pedros/.bun/_bun"
 
-# bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# -------------- End --------------
+
+# ----------- SSH Agent -----------
+
+# Starts an ssh agent if not yet running
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+    ssh-add l $HOME/.ssh/id_ed25519
+fi
+if [ ! -f "$SSH_AUTH_SOCK" ]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+fi
+
+# -------------- End --------------
+
+fastfetch -c $HOME/.config/fastfetch/simple.jsonc
