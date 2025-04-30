@@ -1,6 +1,0 @@
-boxes:
-    - name: rosbox
-      image: rosbox-img
-      gui: true
-      volumes:
-        - /home/pedros/rosbox_shared/:/home/user/shared
