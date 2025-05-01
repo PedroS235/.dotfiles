@@ -140,9 +140,13 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # ----------- SSH Agent -----------
 
-if [[ -z "$SSH_AUTH_SOCK" ]] && ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    eval "$(ssh-agent -t 1h)"
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
     ssh-add $HOME/.ssh/id_ed25519
+fi
+
+if [ ! -f "$SSH_AUTH_SOCK" ]; then
+    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
 fi
 
 # -------------- End --------------
