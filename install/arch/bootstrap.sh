@@ -24,5 +24,4 @@ done
 
 del_aur_user
 
-
 log_info "All packages installed successfully."
