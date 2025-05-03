@@ -2,4 +2,4 @@
 
 Powered by Arch Linux with Hyprland.
 
-![showcase](./assets/showcase.png)
+![showcase](./docs/assets/showcase.png)
