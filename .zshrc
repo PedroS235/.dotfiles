@@ -126,17 +126,12 @@ zle -N zle-keymap-select
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-# -------------- End --------------
-
-
 # -------------- Bun --------------
 
 [ -s "/home/pedros/.bun/_bun" ] && source "/home/pedros/.bun/_bun"
 
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# -------------- End --------------
 
 # ----------- SSH Agent -----------
 
