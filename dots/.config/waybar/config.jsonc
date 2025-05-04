@@ -9,12 +9,12 @@
     "passthrough": false,
     "height": 41,
     "modules-left": [
-        "custom/os_button",
+        "hyprland/workspaces",
         "idle_inhibitor",
         "custom/notification",
     ],
     "modules-center": [
-        "hyprland/workspaces",
+        "wlr/taskbar",
     ],
     "modules-right": [
         "cpu",
@@ -70,7 +70,7 @@
         "tooltip-format": "RAM - {used:0.1f}GiB used"
     },
     "wlr/taskbar": {
-        "format": "{icon} {title:.17}",
+        "format": "{icon}",
         "icon-size": 28,
         "spacing": 3,
         "on-click-middle": "close",

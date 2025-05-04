@@ -87,10 +87,9 @@ tooltip label{
 }
 
 #taskbar button {
-	min-width: 130px;
-	border-bottom: 3px solid rgba(255, 255, 255, 0.3);
-	margin-left: 2px;
-	margin-right: 2px;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+    margin-left: 2px;
+    margin-right: 2px;
     padding-left: 8px;
     padding-right: 8px;
     color: white;
