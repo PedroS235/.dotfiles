@@ -21,6 +21,6 @@ popd
 
 log_info "Stowing dotfiles"
 
-stow .
+stow dots
 
 log_info "Complete"
