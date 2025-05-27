@@ -1,3 +1,3 @@
 #!/bin/bash
 
-yay -S --noconfirm --needed hyprshot ags-hyprpanel-git
+yay -S --noconfirm --needed hyprshot wlogout
