@@ -48,7 +48,7 @@ export PATH
 
 # -------------- Second Brain --------------
 
-export SECOND_BRAIN_VAULT="$HOME/MEGA/Second_Brain_Vault"
+export SECOND_BRAIN_VAULT="$HOME/Nextcloud/NotesVault/"
 
 # -------------- FZF Config --------------
 
