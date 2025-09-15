@@ -98,7 +98,7 @@ alias webserver='python3 -m http.server -b "127.0.0.1" 8080'
 alias pio_act="source $HOME/.platformio/penv/bin/activate"
 
 # Exports ESP IDF Variables
-alias get_idf='. $HOME/Tools/esp/esp-idf/export.sh'
+alias get_idf='. $HOME/tools/esp/esp-idf/export.sh'
 
 # EPS-rust dev
 alias get_esprs='. $HOME/Tools/esp/esp-idf/export.sh'
@@ -259,3 +259,6 @@ img2png() {
     -define png:exclude-chunk=all \
     "${1%.*}.png"
 }
+
+# bun completions
+[ -s "/home/pedro/.bun/_bun" ] && source "/home/pedro/.bun/_bun"
