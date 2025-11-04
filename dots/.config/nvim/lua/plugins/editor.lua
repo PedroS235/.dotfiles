@@ -3,7 +3,7 @@ return {
 	-- NOTE: File Tree Navigator
 	{
 		"stevearc/oil.nvim",
-		enabled = true,
+		enabled = false,
 		-- Lazy loading not recommended
 		lazy = false,
 
@@ -13,6 +13,24 @@ return {
 
 		---@module 'oil'
 		---@type oil.SetupOpts
+		opts = {},
+	},
+	{
+		"A7Lavinraj/fyler.nvim",
+		enabled = false,
+		keys = {
+			{
+				"<leader>e",
+				function()
+					require("fyler").toggle({
+						kind = "split_left_most", -- (Optional) Use custom window layout
+					})
+				end,
+				desc = "File Tree",
+			},
+		},
+		dependencies = { "nvim-mini/mini.icons" },
+		branch = "stable",
 		opts = {},
 	},
 

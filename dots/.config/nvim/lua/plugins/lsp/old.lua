@@ -175,7 +175,7 @@ return {
 						-- certain features of an LSP (for example, turning off formatting for ts_ls)
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 						vim.lsp.config(server_name, server)
-						vim.lsp.enable(server_name)
+						-- vim.lsp.enable(server_name)
 						-- require("lspconfig")[server_name].setup(server)
 					end,
 				},

@@ -66,7 +66,10 @@ local servers = {
 		settings = {
 			["harper-ls"] = {
 				userDictPath = "~/.config/nvim/spell/harper-dict.txt",
-				filetypes = { "markdown" },
+				linters = {
+					SentenceCapitalization = false,
+					SpellCheck = false,
+				},
 			},
 		},
 	},
@@ -96,16 +99,15 @@ function M.setup()
 	require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 	-- Your exact mason-lspconfig setup
-	require("mason-lspconfig").setup({
-		handlers = {
-			function(server_name)
-				local server = servers[server_name] or {}
-				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-				vim.lsp.config(server_name, server)
-				vim.lsp.enable(server_name)
-			end,
-		},
-	})
+	require("mason-lspconfig").setup()
+
+	-- Apply custom server settings
+	for server_name, settings in pairs(servers) do
+		vim.lsp.config(server_name, settings)
+		if server_name == "harper_ls" then
+			vim.lsp.enable(server_name, false)
+		end
+	end
 end
 
 -- Auto-setup

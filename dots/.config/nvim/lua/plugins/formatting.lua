@@ -50,6 +50,7 @@ return {
 			typescriptreact = { "prettier" },
 			javascriptreact = { "prettier" },
 			json = { "prettier" },
+			go = { "gofumpt" },
 		},
 	},
 }

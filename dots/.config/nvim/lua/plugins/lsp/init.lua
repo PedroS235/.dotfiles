@@ -13,7 +13,7 @@ return {
 
 	-- Mason LSP config - also loads early to install servers
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		dependencies = { "WhoIsSethDaniel/mason-tool-installer.nvim", "b0o/schemastore.nvim" },
 		config = function()
 			require("plugins.lsp.servers")

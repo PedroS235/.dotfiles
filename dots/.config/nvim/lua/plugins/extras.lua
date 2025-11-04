@@ -94,9 +94,10 @@ return {
 
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		enabled = false,
+		enabled = true,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
 		},
 		cmd = "Neotree",
 
