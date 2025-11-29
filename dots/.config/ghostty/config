@@ -1,5 +1,5 @@
 font-size = 14
-theme = tokyonight
+theme = Atom One Dark
 background-opacity = 0.8
 window-decoration = false
 copy-on-select = true
@@ -35,3 +35,6 @@ keybind = alt+shift+right=resize_split:right,10
 
 
 keybind = ctrl+a>w=close_surface
+
+# Slowdown mouse scrolling
+mouse-scroll-multiplier = 0.95
