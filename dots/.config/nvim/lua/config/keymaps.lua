@@ -11,3 +11,7 @@ local keymap = vim.keymap.set
 
 -- Do not replace current yank with substituted text
 keymap("x", "p", [["_dP]], opts)
+
+-- Indent line
+keymap("v", "<", "<gv", opts) -- LEFT
+keymap("v", ">", ">gv", opts) -- RIGHT
