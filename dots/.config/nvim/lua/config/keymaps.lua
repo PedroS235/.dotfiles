@@ -6,8 +6,8 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
 -- keymap/Yank to clipboard
--- keymap("v", "<leader>y", '"+y', opts)
--- keymap("n", "<leader>y", '"+y', opts)
+keymap("v", "<leader>y", '"+y', opts)
+keymap("n", "<leader>y", '"+y', opts)
 
 -- Do not replace current yank with substituted text
 keymap("x", "p", [["_dP]], opts)

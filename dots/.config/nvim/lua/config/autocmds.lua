@@ -7,21 +7,8 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
--- Do not start a new line with a comment, if on a comment line
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   callback = function()
     vim.cmd("set formatoptions-=cro")
   end,
 })
-
--- Hyprlang LSP
--- vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
--- 	pattern = { "*.hl", "hypr*.conf" },
--- 	callback = function(event)
--- 		vim.lsp.start({
--- 			name = "hyprlang",
--- 			cmd = { "hyprls" },
--- 			root_dir = vim.fn.getcwd(),
--- 		})
--- 	end,
--- })
