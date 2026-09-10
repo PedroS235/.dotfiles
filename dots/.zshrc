@@ -262,3 +262,14 @@ img2png() {
 
 # opencode
 export PATH=/home/pedro/.opencode/bin:$PATH
+eval "$(mise activate zsh)"
+
+
+export ANDROID_HOME="$HOME/Android/Sdk"
+export ANDROID_SDK_HOME="$HOME/.config/.android"
+export ANDROID_AVD_HOME="$HOME/.config/.android/avd"
+export NDK_HOME="$ANDROID_HOME/ndk/30.0.16138531"
+export PATH="$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/platform-tools"
+
+# Android/Gradle needs an older JDK than system default (system java 26 too new for Gradle 9.1)
+export JAVA_HOME=/opt/android-studio/jbr
