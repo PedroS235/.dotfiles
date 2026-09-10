@@ -10,7 +10,7 @@ function create_aur_user(){
             log_error "Failed to create user $YAY_USER."
             exit 1
         }
-        log_success "User $YAY_USER created."
+        log_info "User $YAY_USER created."
     else
         log_info "User $YAY_USER already exists."
     fi
@@ -23,7 +23,7 @@ function create_aur_user(){
             log_error "Failed to add $YAY_USER to sudoers."
             exit 1
         }
-        log_success "$YAY_USER added to sudoers."
+        log_info "$YAY_USER added to sudoers."
     else
         log_info "$YAY_USER already has NOPASSWD privileges."
     fi
